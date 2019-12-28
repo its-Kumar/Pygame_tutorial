@@ -6,7 +6,6 @@
     
 """
 
-
 import pygame
 import math
 import random
@@ -71,6 +70,8 @@ textY = 10
 
 # Game over text
 over_font = pygame.font.Font('freesansbold.ttf', 64)
+
+credit_font = pygame.font.Font('freesansbold.ttf', 12)
 
 
 def player(x, y):
@@ -193,4 +194,8 @@ while running:
 
     player(playerX, playerY)
     show_score(textX, textY)
+    credit = credit_font.render("Created By: KUMAR SHANU", True, (255, 255, 0))
+    credit2 = credit_font.render("#its_Kumar", True, (255, 255, 0))
+    screen.blit(credit, (10, 580))
+    screen.blit(credit2, (730, 580))
     pygame.display.update()
