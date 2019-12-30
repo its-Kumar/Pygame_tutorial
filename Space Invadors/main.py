@@ -10,6 +10,7 @@ import pygame
 import math
 import random
 from pygame import mixer
+from os import path
 
 # initialize the pygame
 pygame.init()
@@ -20,17 +21,17 @@ running = True
 
 # title and icon
 pygame.display.set_caption("Space Invador")
-icon = pygame.image.load("ufo.png")
+icon = pygame.image.load(path.abspath("images\\ufo.png"))
 pygame.display.set_icon(icon)
-background = pygame.image.load("background.png")
+background = pygame.image.load(path.abspath("images\\background.png"))
 
 # Background Sound
-mixer.music.load('background.wav')
+mixer.music.load(path.abspath('sounds\\background.wav'))
 mixer.music.play(-1)
 
 
 # Player
-playerImg = pygame.image.load("space-ship.png")
+playerImg = pygame.image.load(path.abspath("images\\space-ship.png"))
 playerX = 370
 playerY = 480
 playerX_change = 0
@@ -45,14 +46,14 @@ enemyY_change = []
 num_enemy = 6
 
 for i in range(num_enemy):
-    enemyImg.append(pygame.image.load("enemy.png"))
+    enemyImg.append(pygame.image.load(path.abspath("images\\enemy.png")))
     enemyX.append(random.randint(0, 735))
     enemyY.append(random.randint(50, 150))
     enemyX_change.append(1)
     enemyY_change.append(30)
 
 # Bullet
-bulletImg = pygame.image.load("bullet.png")
+bulletImg = pygame.image.load(path.abspath("images\\bullet.png"))
 bulletX = 0
 bulletY = 480
 bulletX_change = 0
@@ -131,7 +132,7 @@ while running:
                 if bullet_state == "ready":
                     bulletX = playerX
                     bulletY = playerY
-                    bullet_sound = mixer.Sound('laser.wav')
+                    bullet_sound = mixer.Sound(path.abspath('sounds\\laser.wav'))
                     bullet_sound.play()
                     fire_bullet(bulletX, bulletY)
 
@@ -173,7 +174,7 @@ while running:
         # Collision
         collision = is_collision(enemyX[i], enemyY[i], bulletX, bulletY)
         if collision:
-            expo_sound = mixer.Sound('explosion.wav')
+            expo_sound = mixer.Sound(path.abspath('sounds\\explosion.wav'))
             expo_sound.play()
             bulletY = 480
             bullet_state = "ready"
