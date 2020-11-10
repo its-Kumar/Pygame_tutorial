@@ -3,7 +3,7 @@
     Version - 1.0.0
     Simple Game Using Pygame 1.9.6
     #its_Kumar
-    
+
 """
 
 import pygame
@@ -27,7 +27,6 @@ background = pygame.image.load("images/background.png")
 # Background Sound
 mixer.music.load('sounds/background.wav')
 mixer.music.play(-1)
-
 
 # Player
 playerImg = pygame.image.load("images/space-ship.png")
@@ -124,7 +123,7 @@ while running:
             if event.key == pygame.K_RIGHT:
                 playerX_change = 5
             if event.key == pygame.K_UP:
-                playerY_change = - 1
+                playerY_change = -1
             if event.key == pygame.K_DOWN:
                 playerY_change = 1
             if event.key == pygame.K_SPACE:
